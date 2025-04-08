@@ -35,7 +35,7 @@ public class Weapon : MonoBehaviour
     private bool _fireReset = true;
 
     public Cooldown ReloadCooldown;
-    public int MaxBulletCOunt = 10;
+    public int MaxBulletCount = 10;
     public int CurrentBulletCount
     {
         get { return currentBulletCount; }
@@ -43,16 +43,16 @@ public class Weapon : MonoBehaviour
     protected int currentBulletCount = 10;
 
     public AudioClip gunshotSound;
-    private AudioSource audioSource;
+    private AudioSource pickupSound;
 
     void Start()
     {
-        currentBulletCount = MaxBulletCOunt;
+        currentBulletCount = MaxBulletCount;
 
 
 
 
-        audioSource = gameObject.AddComponent<AudioSource>();
+        pickupSound = gameObject.AddComponent<AudioSource>();
 
     }
 
@@ -69,7 +69,7 @@ public class Weapon : MonoBehaviour
 
         if (ReloadCooldown.CurrentProgress == Cooldown.Progress.Finished)
         {
-            currentBulletCount = MaxBulletCOunt;
+            currentBulletCount = MaxBulletCount;
         }
         ReloadCooldown.CurrentProgress = Cooldown.Progress.Ready;
     }
@@ -137,7 +137,7 @@ public class Weapon : MonoBehaviour
         {
             if (!_canShoot) return;
 
-            // Prevent holding fire button
+            //prevent holding down firebutton
             if (!_fireReset) return;
 
             if (ShootingInterval.CurrentProgress != Cooldown.Progress.Ready)
@@ -178,7 +178,7 @@ public class Weapon : MonoBehaviour
     }
     public void Reload()
     {
-        if (ReloadCooldown.IsOnCooldown || currentBulletCount == MaxBulletCOunt)
+        if (ReloadCooldown.IsOnCooldown || currentBulletCount == MaxBulletCount)
             return;
 
         ReloadCooldown.StartCooldown();
@@ -195,9 +195,9 @@ public class Weapon : MonoBehaviour
 
     void PlayGunshotSound()
     {
-        if (audioSource != null && gunshotSound != null)
+        if (pickupSound != null && gunshotSound != null)
         {
-            audioSource.PlayOneShot(gunshotSound); 
+            pickupSound.PlayOneShot(gunshotSound); 
         }
     }
 }

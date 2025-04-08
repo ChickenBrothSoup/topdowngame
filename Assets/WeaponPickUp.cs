@@ -25,7 +25,7 @@ public class WeaponPickUp : PickUp
 
             weaponHandler.EquipWeapon(Weapon);
 
-            Destroy(gameObject); // Destroy the weapon pickup once it's equipped
+            Destroy(gameObject); //destroy weapon once equip
         }
         else
         {

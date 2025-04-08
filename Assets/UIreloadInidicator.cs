@@ -38,7 +38,7 @@ public class UIreloadInidicator : MonoBehaviour
         if(playerWeaponHandler.CurrentWeapon.CurrentBulletCount > 0)
         {
             float currentBulletCount = playerWeaponHandler.CurrentWeapon.CurrentBulletCount;
-            float maxBulletCount = playerWeaponHandler.CurrentWeapon.MaxBulletCOunt;
+            float maxBulletCount = playerWeaponHandler.CurrentWeapon.MaxBulletCount;
 
             float bulletLeftFill = currentBulletCount / maxBulletCount;
 
