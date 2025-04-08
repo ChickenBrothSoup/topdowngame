@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.2692973, y: 0.030295832, z: 0.071153514}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.08, y: 0.24, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6504909213004609631}
@@ -124,7 +124,7 @@ MonoBehaviour:
   Speed: 2000
   Lifetime:
     CurrentProgress: 0
-    Duration: 1
+    Duration: 2
 --- !u!114 &4148073403166118560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,8 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e980f489a6111ce4dab5fdd6b199510d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinDamage: 10
-  MaxDamage: 10
+  MinDamage: 4
+  MaxDamage: 4
   PushForce: 20
   TargetLayerMask:
     serializedVersion: 2

@@ -3,42 +3,52 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
-    public Vector2 MinMaxPos;
+    public Vector2 MinMaxPos;                // Range on the X-axis
+    public Vector2 SpawnIntervalRange = new Vector2(0.5f, 2f); // Min and Max interval
 
-    public float SpawnInterval = 0.1f;
-
-    private bool isSpawning = false;
+    public int MaxEnemies = 10;              // Total enemies to spawn
+    private int enemiesSpawned = 0;          // Counter
 
     private float spawnTimer;
 
     public GameObject Enemy;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        spawnTimer = SpawnInterval;
+        SetRandomSpawnTime();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (spawnTimer > 0)
-        {
-            spawnTimer -= Time.deltaTime;
+        if (enemiesSpawned >= MaxEnemies)
             return;
-        }
 
+        spawnTimer -= Time.deltaTime;
+
+        if (spawnTimer <= 0f)
+        {
+            SpawnEnemy();
+            SetRandomSpawnTime();
+        }
+    }
+
+    void SetRandomSpawnTime()
+    {
+        spawnTimer = Random.Range(SpawnIntervalRange.x, SpawnIntervalRange.y);
+    }
+
+    void SpawnEnemy()
+    {
         if (Enemy)
         {
-          Vector3 randomposition = new Vector3(
-              Random.Range(MinMaxPos.x, MinMaxPos.y),
-              transform.position.y,
-              transform.position.z
-          );
+            Vector3 randomPosition = new Vector3(
+                Random.Range(MinMaxPos.x, MinMaxPos.y),
+                transform.position.y,
+                transform.position.z
+            );
 
-                GameObject.Instantiate(Enemy, randomposition, Quaternion.identity);
+            Instantiate(Enemy, randomPosition, Quaternion.identity);
+            enemiesSpawned++;
         }
-        
-        spawnTimer = SpawnInterval;
     }
 }

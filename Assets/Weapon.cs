@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using Random = UnityEngine.Random;
 
 public class Weapon : MonoBehaviour
@@ -41,10 +42,18 @@ public class Weapon : MonoBehaviour
     }
     protected int currentBulletCount = 10;
 
+    public AudioClip gunshotSound;
+    private AudioSource audioSource;
 
     void Start()
     {
         currentBulletCount = MaxBulletCOunt;
+
+
+
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+
     }
 
     private void Update()
@@ -126,7 +135,26 @@ public class Weapon : MonoBehaviour
         }
         void SingleFireShoot()
         {
+            if (!_canShoot) return;
 
+            // Prevent holding fire button
+            if (!_fireReset) return;
+
+            if (ShootingInterval.CurrentProgress != Cooldown.Progress.Ready)
+                return;
+
+            _fireReset = false;
+            PlayGunshotSound();
+            ShootProjectile();
+            currentBulletCount--;
+            
+           
+            ShootingInterval.StartCooldown();
+
+            if (currentBulletCount <= 0 && !ReloadCooldown.IsOnCooldown)
+            {
+                ReloadCooldown.StartCooldown();
+            }
         }
         void BurstFireShoot()
         {
@@ -148,11 +176,28 @@ public class Weapon : MonoBehaviour
 
        
     }
+    public void Reload()
+    {
+        if (ReloadCooldown.IsOnCooldown || currentBulletCount == MaxBulletCOunt)
+            return;
+
+        ReloadCooldown.StartCooldown();
+    }
     public void StopShoot()
     {
         if (FireMode == FireModes.Auto)
             return;
 
         _fireReset = true;
+
+
+    }
+
+    void PlayGunshotSound()
+    {
+        if (audioSource != null && gunshotSound != null)
+        {
+            audioSource.PlayOneShot(gunshotSound); 
+        }
     }
 }

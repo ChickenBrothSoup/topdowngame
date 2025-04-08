@@ -12,13 +12,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1109132603375900544, guid: ad001c57da036034ea64363b24b6d79a, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1517325667676942545, guid: ad001c57da036034ea64363b24b6d79a, type: 3}
       propertyPath: Acceleration
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1517325667676942545, guid: ad001c57da036034ea64363b24b6d79a, type: 3}
       propertyPath: _movementSpeed
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567481702908088126, guid: ad001c57da036034ea64363b24b6d79a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1567481702908088126, guid: ad001c57da036034ea64363b24b6d79a, type: 3}
       propertyPath: m_LocalPosition.x

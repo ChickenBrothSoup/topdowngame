@@ -10,8 +10,13 @@ public class PlayerWeaponHandler : WeaponHandler
         if (Input.GetButton("Fire1"))
             _tryShoot = true;
 
-        if(Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Fire1"))
             _tryShoot = false;
+        if (Input.GetKeyDown(KeyCode.R) && CurrentWeapon != null)
+        {
+            CurrentWeapon.Reload();
+        }
+
     }
 
 }
