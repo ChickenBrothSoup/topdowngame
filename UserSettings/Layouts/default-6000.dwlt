@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Console
+  m_Title: Scene
   m_RootView: {fileID: 8}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 73
+  controlID: 126
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -1209,9 +1209,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 0.5333503, y: -3.4795601, z: -0.11429736}
+    m_Target: {x: -1.4600856, y: -3.0398326, z: -0.1084193}
     speed: 2
-    m_Value: {x: 0.5333503, y: -3.4795601, z: -0.11429736}
+    m_Value: {x: -1.4600856, y: -3.0398326, z: -0.1084193}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1261,9 +1261,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 10.759856
+    m_Target: 10.17204
     speed: 2
-    m_Value: 10.759856
+    m_Value: 10.17204
   m_Ortho:
     m_Target: 1
     speed: 2
