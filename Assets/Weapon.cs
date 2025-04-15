@@ -14,7 +14,8 @@ public class Weapon : MonoBehaviour
         BurstFire
 
     }
-
+    public AudioClip Reloading;
+    private AudioSource sound;
 
     public FireModes FireMode;
     public float spread = 0f;
@@ -51,7 +52,7 @@ public class Weapon : MonoBehaviour
 
 
 
-
+        sound = GetComponent<AudioSource>();
         pickupSound = gameObject.AddComponent<AudioSource>();
 
     }
@@ -61,7 +62,13 @@ public class Weapon : MonoBehaviour
         UpdateReloadCooldown();
         UpdateShootCooldown();
     }
-
+    void PlayReload()
+    {
+        if ( gunshotSound != null && sound != null )
+        {
+            sound.PlayOneShot(Reloading);
+        }
+    }
     private void UpdateReloadCooldown()
     {
         if (ReloadCooldown.CurrentProgress != Cooldown.Progress.Finished)
@@ -153,6 +160,7 @@ public class Weapon : MonoBehaviour
 
             if (currentBulletCount <= 0 && !ReloadCooldown.IsOnCooldown)
             {
+                PlayReload();
                 ReloadCooldown.StartCooldown();
             }
         }
@@ -180,6 +188,7 @@ public class Weapon : MonoBehaviour
     {
         if (ReloadCooldown.IsOnCooldown || currentBulletCount == MaxBulletCount)
             return;
+        PlayReload();
 
         ReloadCooldown.StartCooldown();
     }

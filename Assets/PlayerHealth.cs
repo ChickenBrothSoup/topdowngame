@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     private float invulnerabilityTimer = 0f;
 
     public AudioClip deathSound;
+    public AudioClip hurtSound;
     private AudioSource sound;
 
     void Start()
@@ -36,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth -= damage;
         Debug.Log("Player took damage: " + damage + ", HP left: " + currentHealth);
+        PlayHurtSoundEffect();
 
         isInvulnerable = true;
         invulnerabilityTimer = invulnerabilityDuration;
@@ -70,6 +72,13 @@ public class PlayerHealth : MonoBehaviour
         if (sound != null && deathSound != null)
         {
             sound.PlayOneShot(deathSound);
+        }
+    }
+    void PlayHurtSoundEffect()
+    {
+        if ( sound != null && hurtSound != null)
+        {
+            sound.PlayOneShot(hurtSound);
         }
     }
 

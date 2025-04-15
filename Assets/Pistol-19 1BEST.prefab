@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c117c2023434abe44af725b7db77d0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Reloading: {fileID: 8300000, guid: 8c4762e133f511841b7163701ef6f00b, type: 3}
   FireMode: 1
   spread: 0
   BurstFireAmount: 3

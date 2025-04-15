@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class CameraScript : MonoBehaviour
@@ -7,8 +8,23 @@ public class CameraScript : MonoBehaviour
     public Vector3 offset;
 
     public AudioClip Alert;
-    private AudioSource audioSource;
+    private AudioSource sound;
 
+
+    void PlayMusic()
+    {
+        if (sound != null && Alert != null)
+        {
+            sound.PlayOneShot(Alert);
+        }
+      
+    }
+
+    private void Start()
+    {
+        sound = GetComponent<AudioSource>();
+        PlayMusic();
+    }
     void Update()
     {
         if (target == null)
