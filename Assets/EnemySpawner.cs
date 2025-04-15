@@ -13,9 +13,14 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject Enemy;
 
+    public AudioClip HereTheyCome;
+    private AudioSource sound;
+
     void Start()
     {
         SetRandomSpawnTime();
+        sound = GetComponent<AudioSource>();
+        PlayWaveStart();
     }
 
     void Update()
@@ -49,6 +54,14 @@ public class EnemySpawner : MonoBehaviour
 
             Instantiate(Enemy, randomPosition, Quaternion.identity);
             enemiesSpawned++;
+        }
+    }
+
+    void PlayWaveStart()
+    {
+        if (sound != null && HereTheyCome != null)
+        {
+            sound.PlayOneShot(HereTheyCome);
         }
     }
 }
